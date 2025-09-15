@@ -21,16 +21,33 @@ Fixed &Fixed::operator=(const Fixed &copy)
 	return *this;
 }
 
+Fixed::Fixed(int num)
+{
+	std::cout << "Int constructor called" << std::endl;
+	number = num << bit_num;
+}
+
+Fixed::Fixed(float num)
+{
+	std::cout << "Float constructor called" << std::endl;
+	number = roundf(num * (1 << bit_num));
+}
+
 Fixed::~Fixed()
 {
 	std::cout << "Destructor called" << std::endl;
 }
 
-int	Fixed::getRawBits( void ) const
-{
-	std::cout << "getRawBits member function called" << std::endl;
-	return number;
-}
+int	Fixed::getRawBits( void ) const { return number; }
 
 void Fixed::setRawBits( int const raw ) {number = raw;}
 
+float Fixed::toFloat( void ) const { return (float)number / (1 << bit_num); }
+
+int Fixed::toInt( void ) const { return number >> bit_num; }
+
+std::ostream &operator<<(std::ostream &out, const Fixed &fixed)
+{
+	out << fixed.toFloat();
+	return out;
+}
