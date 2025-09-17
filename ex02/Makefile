@@ -1,4 +1,4 @@
-NAME = firstClass
+NAME = operators
 
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++17

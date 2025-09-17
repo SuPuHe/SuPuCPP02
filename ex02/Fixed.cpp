@@ -46,6 +46,52 @@ float Fixed::toFloat( void ) const { return (float)number / (1 << bit_num); }
 
 int Fixed::toInt( void ) const { return number >> bit_num; }
 
+bool Fixed::operator>(const Fixed &second) const { return number > second.number; }
+bool Fixed::operator<(const Fixed &second) const { return number < second.number; }
+bool Fixed::operator>=(const Fixed &second) const { return number >= second.number; }
+bool Fixed::operator<=(const Fixed &second) const { return number <= second.number; }
+bool Fixed::operator==(const Fixed &second) const { return number == second.number; }
+bool Fixed::operator!=(const Fixed &second) const { return number != second.number; }
+
+Fixed Fixed::operator+(const Fixed &second) const { return this->toFloat() + second.toFloat(); }
+Fixed Fixed::operator-(const Fixed &second) const { return this->toFloat() - second.toFloat(); }
+Fixed Fixed::operator*(const Fixed &second) const { return this->toFloat() * second.toFloat(); }
+Fixed Fixed::operator/(const Fixed &second) const { return this->toFloat() / second.toFloat(); }
+
+Fixed &Fixed::operator++()
+{
+	++number;
+	return *this;
+}
+
+Fixed Fixed::operator++(int)
+{
+	Fixed temp(*this);
+	++number;
+	return temp;
+}
+
+Fixed &Fixed::operator--()
+{
+	--number;
+	return *this;
+}
+
+Fixed Fixed::operator--(int)
+{
+	Fixed temp(*this);
+	++number;
+	return temp;
+}
+
+Fixed &Fixed::min(Fixed &a, Fixed &b) { return (a < b) ? a : b; }
+
+const Fixed &Fixed::min(const Fixed &a, const Fixed &b) { return (a < b) ? a : b; }
+
+Fixed &Fixed::max(Fixed &a, Fixed &b) { return (a > b) ? a : b; }
+
+const Fixed &Fixed::max(const Fixed &a, const Fixed &b) { return (a > b) ? a : b; }
+
 std::ostream &operator<<(std::ostream &out, const Fixed &fixed)
 {
 	out << fixed.toFloat();
