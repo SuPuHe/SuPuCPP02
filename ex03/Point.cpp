@@ -6,7 +6,7 @@
 /*   By: omizin <omizin@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 10:01:02 by omizin            #+#    #+#             */
-/*   Updated: 2025/09/18 10:01:03 by omizin           ###   ########.fr       */
+/*   Updated: 2025/09/18 11:46:23 by omizin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,22 @@
 
 Point::Point(): _x(0), _y(0)
 {
-	std::cout << "Default constructor called" << std::endl;
+	//std::cout << "Default constructor called" << std::endl;
 }
 
 Point::Point(float x, float y): _x(x), _y(y)
 {
-	std::cout << "Constructor called" << std::endl;
+	//std::cout << "Constructor called" << std::endl;
 }
 
 Point::Point(Point const &copy): _x(copy._x), _y(copy._y)
 {
-	std::cout << "Copy constructor called" << std::endl;
+	//std::cout << "Copy constructor called" << std::endl;
 }
 
 Point::~Point()
 {
-	std::cout << "Destructor called" << std::endl;
+	//std::cout << "Destructor called" << std::endl;
 }
 
 const Fixed &Point::getX() const { return _x; }
